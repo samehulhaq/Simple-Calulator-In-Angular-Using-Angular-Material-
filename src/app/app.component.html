@@ -2,53 +2,68 @@
 
 <div class="container mt-4">
   <div class="row">
-    <div class="col-2"></div>
-    <div class="col-6 text-center">
+       <form>
+
+    <div class="col-8 text-center">
+
       <mat-card>
-
-        <mat-card-title><h1 class="text-secondary " style="font-size: 40px;">Simple Calculator</h1></mat-card-title>
+        <mat-card-title><h1 class="text-secondary text-bold" style="font-size: 40px;">BMI Calculator</h1></mat-card-title>
         <br>
-      <form>
 
-        <mat-form-field class="example-full-width mx-2" appearance="fill">
-          <mat-label>Enter First Number</mat-label>
-          <input matInput placeholder="First Number" #num1 fxFlex="50">
-        </mat-form-field>
-        <mat-form-field class="example-full-width mx-2" appearance="fill">
-          <mat-label>Enter Second Number</mat-label>
-          <input matInput placeholder="Second Number" #num2 >
-        </mat-form-field>
-    
-    
-    <section>
-      <div class="example-button-row">
-        <mat-card-actions>
-          <button class="mx-2" (click)="sumFunc(num1.value,num2.value)"  mat-raised-button color="primary">Add</button>
-          <button class="mx-2" (click)="minFunc(num1.value,num2.value)" mat-raised-button color="accent">Subtract</button>
-          <button class="mx-2" (click)="mulFunc(num1.value,num2.value)" mat-raised-button color="warn">Multiply</button>
-          <button class="mx-2" (click)="divFunc(num1.value,num2.value)" mat-raised-button color="secondary">Divide</button>
-          <button class="mx-2"  mat-raised-button color="primary" type="reset">Reset</button>
 
-        
-        </mat-card-actions>
-      
-      </div>
-    
-    </section>
-    <br>
+        <div class="form-group row">
+          <div class="col-sm-10">
+          <label for="staticEmail" class=" col-form-label ml-5"><h1>Height</h1></label>
+            
+            <mat-form-field  class="ml-5">
+              <input matInput type="text" id="formField-CurrencyCode" 
+                placeholder="Enter Height In Feets" name="CurrencyCode" #num1
+                required  style="width: 280px;"/>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-group row" style="margin-left:13%;">
+          <label for="staticEmail" class="col-sm-2 col-form-label"><h1>Weight</h1></label>
+          <div class="col-sm-10">
+            <mat-slider min="1" max="200" step="1" matInput value="1.5" #num2 thumbLabel [thumbLabel]="true"
+            [displayWith]="formatLabel"  class="float-left "  aria-label="units" ></mat-slider>
+          </div>
+        </div>
+     <br>
+             <div class="row text-center" style="margin-left: 160px;" *ngIf="isShown">
+              <div class="col-md-3" style="width: 220px;">
+                <div class="card border-secondry mx-sm-1 p-3"  >
+                    <div class="card border-secondry shadow text-secondry p-3 my-card" >    <img src="assets/height.png" alt=""  height="20px" weight="60px">      </div><br>
+                    <div class="text-secondry text-center mt-3"><h4>Height</h4></div>
+                    <div class="text-secondry text-center mt-2" style="font-size: 30px;">{{ ft| number : '1.2-2' }}m</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card border-secondry mx-sm-1 p-3" style="width: 220px;">
+                  <div class="card border-secondry shadow text-secondry p-3 my-card" > <img src="assets/weight.png" alt=""  height="20px" weight="60px">      </div><br>
+                  <div class="text-secondry text-center mt-3"><h4>Weight</h4></div>
+                  <div class="text-secondry text-center mt-2" style="font-size: 30px;">{{ lbs| number : '1.2-2' }}Kg</div>
+              </div>
+          </div>  
+             </div>
+          <div class="example-button-row btn-group" style="display: flex; margin-top: 40px; margin-left: 270px;"><br>
+            <mat-card-actions>
+              <button class="mx-2 pl-3 pr-3" (click)="sumFunc(num1.value,num2.value)"  mat-raised-button color="primary">Calculate BMI</button>  
+              <button class="mx-2  pl-5 pr-5"  mat-raised-button color="accent" type="reset">Reset</button>
+            </mat-card-actions> 
+          </div> 
     <mat-card>
-    
- 
-      <mat-card-title class="text-secondary font-weight-bold">Result</mat-card-title><br>
+      <mat-card-title class="text-secondary font-weight-bold">BMI</mat-card-title><br>
+      <mat-card-subtitle> <h1 class="text-primary" style="font-size: 40px;"> {{store2 | number : '1.2-2'}}</h1></mat-card-subtitle>
       <mat-card-subtitle> <h1 class="text-secondary" style="font-size: 40px;"> {{result}}</h1></mat-card-subtitle>
-  
     </mat-card>
-    </form>
+
     </mat-card>
     
 
     </div>
-    <div class="col-2"></div>
+
+  </form>
   </div>
 </div>
  
